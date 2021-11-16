@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Quote {
+  id         Int      @id @default(autoincrement())
+  quote      String
+  author     String
+  created_at DateTime @default(now())
+}
