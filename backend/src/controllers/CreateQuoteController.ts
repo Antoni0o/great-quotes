@@ -9,7 +9,7 @@ class CreateQuoteController {
 
     const result = await service.execute(quote, author);
 
-    return res.json(result);
+    return res.status(201).json(result);
   }
 }
 
