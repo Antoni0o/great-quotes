@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { FindQuoteService } from "../services/FindQuoteService";
+import { GetQuoteService } from "../services/GetQuoteService";
 
-class FindQuoteController { 
+class GetQuoteController { 
   async handle(req: Request, res: Response) {
     const { id } = req.params;
 
     let parsedId = parseInt(id);
 
-    const service = new FindQuoteService;
+    const service = new GetQuoteService;
 
     const result = await service.execute(parsedId);
 
@@ -15,4 +15,4 @@ class FindQuoteController {
   }
 }
 
-export { FindQuoteController }
+export { GetQuoteController }

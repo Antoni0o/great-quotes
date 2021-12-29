@@ -1,7 +1,7 @@
 import { AppError } from "../errors/AppError";
 import prismaClient from "../prisma";
 
-class FindQuoteService {
+class GetQuoteService {
   async execute(id: number) {
     const quote = await prismaClient.quote.findFirst({
       where: {
@@ -17,4 +17,4 @@ class FindQuoteService {
   }
 }
 
-export { FindQuoteService };
+export { GetQuoteService };
