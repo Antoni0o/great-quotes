@@ -1,3 +1,4 @@
+import { AppError } from "../errors/AppError";
 import prismaClient from "../prisma";
 
 class FindQuoteService {
@@ -7,6 +8,10 @@ class FindQuoteService {
         id: id,
       },
     });
+
+    if(!quote) {
+      throw new AppError("Quote not found!", 404)
+    }
 
     return quote;
   }

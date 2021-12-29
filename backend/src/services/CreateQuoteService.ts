@@ -1,3 +1,4 @@
+import { AppError } from "../errors/AppError";
 import prismaClient from "../prisma";
 
 class CreateQuoteService {
@@ -8,6 +9,10 @@ class CreateQuoteService {
         author
       }
     });
+
+    if(!text) {
+      throw new AppError("Something wrong! Quote not created!", 400);
+    }
 
     return text;
   }

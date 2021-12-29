@@ -1,19 +1,20 @@
+import axios from "axios";
 import { Request, Response } from "express";
+
 import { FindQuoteService } from "../services/FindQuoteService";
 
 class GetRandomQuoteController { 
   async handle(req: Request, res: Response) {
-    const id = Math.floor(Math.random() * 10);
+    const url = "http://localhost:4000/quote/count"
 
-    const service = new FindQuoteService;
+    const { data } = await axios.get(url)
 
+    const findQuoteService = new FindQuoteService;
     
-    const result = await service.execute(id);
+    const id = Math.floor(Math.random() * data._all) + 1;
     
-    if(!result) {
-      return res.status(404).json({ error: "Quote not found" });
-    }
-
+    const result = await findQuoteService.execute(id);
+    
     return res.json(result);
   }
 }
